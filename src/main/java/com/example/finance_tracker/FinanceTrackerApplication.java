@@ -21,11 +21,14 @@ public class FinanceTrackerApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(){
+    public CommandLineRunner demo(TransactionRepository repository){
         return (args )->{
             Transaction transaction=new Transaction(LocalDate.parse("2026-02-14"),100.5,"Shopping",
                     "Shein","expense");
-            logger.info(transaction.toString());
+//            logger.info(transaction.toString());
+
+            repository.save(transaction);
+            repository.findAll().forEach(transaction1 -> logger.info(transaction1.toString()));
         };
     }
 

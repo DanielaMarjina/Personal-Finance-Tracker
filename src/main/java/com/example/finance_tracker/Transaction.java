@@ -1,15 +1,23 @@
 package com.example.finance_tracker;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jdk.jfr.Enabled;
 
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Enabled
+@Entity
+@Table(name="transactions")
 public class Transaction {
-    private AtomicInteger id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private LocalDate date;
-    private double value;
+    private double amount;
     private String category;
     private String description;
     private String transactionType;
@@ -17,9 +25,9 @@ public class Transaction {
     protected Transaction() {
     }
 
-    public Transaction(LocalDate date, double value, String category, String description, String transactionType) {
+    public Transaction(LocalDate date, double amount, String category, String description, String transactionType) {
         this.date = date;
-        this.value = value;
+        this.amount = amount;
         this.category = category;
         this.description = description;
         this.transactionType = transactionType;
@@ -29,8 +37,8 @@ public class Transaction {
         return date;
     }
 
-    public double getValue() {
-        return value;
+    public double getAmount() {
+        return amount;
     }
 
     public String getCategory() {
@@ -45,7 +53,7 @@ public class Transaction {
         return transactionType;
     }
 
-    public AtomicInteger getId() {
+    public Long getId() {
         return id;
     }
 
@@ -54,7 +62,7 @@ public class Transaction {
         return String.format("Transaction :" +
                 "id=" + id +
                 ", date=" + date +
-                ", value=" + value +
+                ", amount=" + amount +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
                 ", transactionType='" + transactionType + " .");
