@@ -24,10 +24,12 @@ public class FinanceTrackerApplication {
     public CommandLineRunner demo(TransactionRepository repository){
         return (args )->{
             Transaction transaction=new Transaction(LocalDate.parse("2026-02-14"),100.5,"Shopping",
-                    "Shein","expense");
+                    "Shein",TransactionType.Expense);
 //            logger.info(transaction.toString());
 
             repository.save(transaction);
+            repository.save(new Transaction(LocalDate.now(), 250.0, "Food", "Supermarket", TransactionType.Expense));
+            repository.save(new Transaction(LocalDate.now(), 500.0, "Salary", "March Salary", TransactionType.Income));
             repository.findAll().forEach(transaction1 -> logger.info(transaction1.toString()));
         };
     }

@@ -1,9 +1,6 @@
 package com.example.finance_tracker;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jdk.jfr.Enabled;
 
 import java.time.LocalDate;
@@ -14,23 +11,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Transaction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
     private double amount;
     private String category;
     private String description;
-    private String transactionType;
+    @Enumerated(EnumType.STRING)
+    private TransactionType type;
 
     protected Transaction() {
     }
 
-    public Transaction(LocalDate date, double amount, String category, String description, String transactionType) {
+    public Transaction(LocalDate date, double amount, String category, String description, TransactionType type) {
         this.date = date;
         this.amount = amount;
         this.category = category;
         this.description = description;
-        this.transactionType = transactionType;
+        this.type = type;
     }
 
     public LocalDate getDate() {
@@ -49,8 +47,8 @@ public class Transaction {
         return description;
     }
 
-    public String getTransactionType() {
-        return transactionType;
+    public TransactionType getTransactionType() {
+        return type;
     }
 
     public Long getId() {
@@ -65,6 +63,6 @@ public class Transaction {
                 ", amount=" + amount +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
-                ", transactionType='" + transactionType + " .");
+                ", type='" + type + " .");
     }
 }
