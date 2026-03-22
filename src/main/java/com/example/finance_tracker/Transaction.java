@@ -6,13 +6,15 @@ import jdk.jfr.Enabled;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Entity
-@Table(name="transactions")
+@Entity //clasa asta e un tabel in bd
+@Table(name="transactions") //si se numeste asa
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //e generat automat dar se uita la tipul variabilei
+    //de ex daca e auto increment
+    private Long id;  //atomic e bun cand nu are legatura cu baza de date si lucreaza cu threads,
+    //nu e recunoscut de sql
     private LocalDate date;
     private double amount;
     private String category;
