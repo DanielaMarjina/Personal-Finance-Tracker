@@ -1,11 +1,11 @@
-package com.example.finance_tracker;
+package com.example.finance_tracker.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
 
 import java.time.LocalDate;
-import java.util.concurrent.atomic.AtomicInteger;
 
+@JsonPropertyOrder({"id", "date", "amount", "category", "description", "type"})
 @Entity //clasa asta e un tabel in bd
 @Table(name="transactions") //si se numeste asa
 public class Transaction {

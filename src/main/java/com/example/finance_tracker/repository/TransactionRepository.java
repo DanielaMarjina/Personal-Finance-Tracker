@@ -1,5 +1,6 @@
-package com.example.finance_tracker;
+package com.example.finance_tracker.repository;
 
+import com.example.finance_tracker.entity.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
