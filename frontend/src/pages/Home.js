@@ -1,4 +1,5 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import "./Home.css";
 
 function Home() {
     const [transactions, setTransactions] = useState([]); //transactions=[]
@@ -21,20 +22,27 @@ function Home() {
     }, []
     );
 
-    return(
-        <div>
-            <h1>Transactions:</h1>
-            {transactions.length===0 ?  //=== înseamnă egalitate strictă (compară și valoarea, și tipul)
-            (<p>No transactions</p>) : (
-                <ul>
-                    {transactions.map(t=>(
-                        <li key={t.id}>
-                            {t.description}: {t.amount}
-                        </li>
-                    ))}
-                </ul>
-            ) }
+    return (
+        <div className="home-container">
+            <h1 className="home-title">Transactions</h1>
 
+            {transactions.length === 0 ? (
+                <p>No transactions</p>
+            ) : (
+                <ul>
+                    {transactions.map((t) => {
+                        const value = t.transactionType === "Expense" ? `-${t.amount}` : `+${t.amount}`;
+                        const className = t.transactionType === "Expense" ? "expense" : "income";
+
+                        return (
+                            <li key={t.id} className="home-item">
+                                {t.description}:{" "}
+                                <span className={className}>{value}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
+            )}
         </div>
     );
 }

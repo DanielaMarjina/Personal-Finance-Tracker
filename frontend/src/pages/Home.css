@@ -1,0 +1,39 @@
+.home-container {
+  background: rgba(15, 25, 60, 0.9);
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+  width: 300px;
+}
+
+.home-title {
+  color: #00eaff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px #00eaff;
+  text-align: center;
+}
+
+.home-item {
+  background: transparent;
+  border: 1px solid #00eaff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  color: #e0e6ff;
+  transition: 0.3s;
+}
+
+.home-item:hover {
+  background-color: #00eaff;
+  color: #0a0f2c;
+  box-shadow: 0 0 10px #00eaff;
+}
+
+.income{
+    color: lime;
+}
+
+.expense{
+    color: red;
+}
